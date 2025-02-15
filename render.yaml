@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: my-app
+    env: python
+    buildCommand: |
+      wget -O java.tar.gz https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
+      mkdir -p /opt/render/java
+      tar -xzf java.tar.gz -C /opt/render/java --strip-components=1
+      echo "export PATH=/opt/render/java/bin:$PATH" >> ~/.bashrc
+      source ~/.bashrc
+      pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port=10000 --server.address=0.0.0.0

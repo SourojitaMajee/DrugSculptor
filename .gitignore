@@ -11,6 +11,4 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Ignore model and dataset files
-*.pkl
 *.csv
-*.txt
